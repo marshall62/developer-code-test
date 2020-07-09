@@ -9,12 +9,12 @@ default_mongo_port = 27017
 mongo_port = os.environ.get("MONGODB_PORT", None)
 if not mongo_port:
     print(f"MONGODB_PORT environment variable not set.  Assuming MongoDb is running on {default_mongo_port}")
-    mongo_port = default_mongo_port
+mongo_port = default_mongo_port if not mongo_port else int(mongo_port)
 
 @app.route("/api/artwork", methods=['GET'])
 def artwork ():
     access_num = request.args.get('accession_number')
-    client = pmg.MongoClient()
+    client = pmg.MongoClient(host="localhost", port=mongo_port)
     db = client.cma
     rec = db.artwork.find_one({'accession_number': str(access_num)})
     rec['image'] = '/images/' + rec['accession_number']+'_reduced.jpg'

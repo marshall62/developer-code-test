@@ -55,6 +55,11 @@ def add_artworks_to_mongo (artworks, port):
     db_artwork = db.artwork
     for a in artworks:
         db_artwork.insert_one(a)
+    db.artwork.create_index([("accession_number", pm.TEXT),
+                             ("title", pm.TEXT),
+                             ("tombstone", pm.TEXT),
+                             ("creators", pm.TEXT),
+                             ("departments",pm.TEXT)])
     # mongo now has artwork document in the cma collection
 
 
@@ -62,7 +67,7 @@ default_mongo_port = 27017
 mongo_port = os.environ.get("MONGODB_PORT", None)
 if not mongo_port:
     print(f"MONGODB_PORT environment variable not set.  Assuming MongoDb is running on {default_mongo_port}")
-    mongo_port = default_mongo_port
+mongo_port = default_mongo_port if not mongo_port else int(mongo_port)
 
 def main ():
     artwork_json = create_json()
