@@ -1,0 +1,16 @@
+In order to deploy this thing with mongo db not having to be installed/configed deploy as docker container:
+folllowed: https://phoenixnap.com/kb/docker-mongodb
+Verify I have docker service:
+sudo service docker status
+See images:
+sudo docker images
+Get docker latest image:
+sudo docker pull mongo
+sudo docker images
+
+There is more to do but this seems promising.   Continue with the configuration after the above.
+It seems that I'll have to have at least one docker image but perhaps just this one loaded with the art data
+and then flask can talk to it.
+
+This will require the recipient to run some form of docker so I might want to see what those requirements are like before sinking
+time into this.

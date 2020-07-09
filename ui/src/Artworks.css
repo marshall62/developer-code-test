@@ -1,0 +1,36 @@
+.Artworks-info-div {
+    margin: auto;
+    text-align: center;
+}
+
+.Artworks-carousel-item {
+    /*max-height: 400px;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: auto;*/
+}
+
+.Artworks-img {
+    /*width: auto;*/
+    /*height: 400px;*/
+}
+
+.Artworks-img-container {
+    position: relative;
+}
+
+.Artworks-img-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.Artworks-img-box-stack {
+    z-index: 9;
+    margin: auto;
+    display: none;
+}
+
+.Artworks-full-descr {
+    display: block;
+}

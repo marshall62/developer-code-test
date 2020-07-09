@@ -1,0 +1,27 @@
+To start mongo db service
+
+sudo systemctl start mongod  (also stop , restart)
+
+CLI
+mongo
+> use cma
+> show collections
+> db.artwork.find()
+
+to drop
+> db.artwork.drop()
+
+create the cma database
+
+db cma
+insert into a collection like
+
+db.artwork.insert({"title":"Self Portrait"})
+
+Now follow python pymongo basic instructions to populate:
+Now executed dbtest to populate the cma.artwork document
+
+db.artwork.find().limit(10) // get back 10 artwork records
+
+SHow 50 title and creator pretty
+db.artwork.find({},{"title":1,"creator":2,_id:0}).pretty().limit(50)

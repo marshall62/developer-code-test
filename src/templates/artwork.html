@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input id="searchtext" type="text"/> <input type="button" name="search" value="Search"></input>
+<br>
+<div id="content">
+  <img src="{{url_for('static', filename=artwork.image)}}">
+  <br>
+{{ artwork.title }}
+  <br>
+  {% if artwork.roles|length == 0 %}
+     No artist known
+  {%endif%}
+  {% for role in artwork.roles %}
+    {{role}}
+    {% for creator in artwork.creators[loop.index0] %}
+     {{creator}} <br>
+     {%endfor%}
+  {%endfor%}
+</div>
+</body>
+</html>

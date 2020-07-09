@@ -1,0 +1,15 @@
+.CMABanner-banner-header {
+    font-family: Arial;
+    font-size: 40px;
+    color: white;
+    margin: 10px;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+
+.CMABanner-banner-tab-text {
+    font-family: Arial;
+    font-size: 24px;
+}
