@@ -98,9 +98,19 @@ You are now in a python virtual environment
 
 `pip install -r requirements.txt`
 
-`export MONGODB_PORT=27017`
+If you know that your MongoDB is running on port 27017 (the default) you can skip this.  Otherwise
+you should set the MONGODB_PORT environment variable to your MongoDb port.  You
+can determine the port with
+`sudo lsof -iTCP -sTCP:LISTEN | grep mongo`
 
-If your MongoDb is running on a different port, set the above environment variable to the correct port
+And set the environment variable:
+
+`export MONGODB_PORT=27017` (Linux / Mac OS)
+
+`set MONGODB_PORT=27017` (Windows)
+
+
+Migrate the SQL db to MongoDB (JSON)
 
 `python db_migrate.py`
 
