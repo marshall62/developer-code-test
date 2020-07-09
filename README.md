@@ -1,4 +1,4 @@
-#Overview:
+# Overview:
 
 A prototype of a typical museum collection search is offered.  Functions include
 a search box that allows a user to enter words and get back results that match.  
@@ -12,7 +12,7 @@ Obviously this is just a demo that I can get something working.  There are bette
 to do all of the things that were done but in the interest of time I kept it to a basic artwork
 lookup and browse function.   
 
-##Question 1: Read SQLite database and emit JSON
+## Question 1: Read SQLite database and emit JSON
 
 My solution is in /src/dbmigrate.py.  This is a quick and dirty python script
 that reads the database and creates one JSON collection called Artwork that
@@ -55,7 +55,7 @@ to the JSON (MongoDb) database.
 
 
 
-##Question 2:  Create a web site to view the collection
+## Question 2:  Create a web site to view the collection
 
 I'm using a combination of Python/Flask for the back-end and React for the front end.
 /src/app.py is the Flask REST API with one endpoint /api/artwork/search.  This returns
@@ -79,7 +79,7 @@ _**node and npm must be installed on machine.**_
 
 
 
-###Python Flask back-end including SQLite database and JSON utility
+### Python Flask back-end including SQLite database and JSON utility
 
 You need to be running Python 3.
 
