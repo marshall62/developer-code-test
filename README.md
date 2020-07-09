@@ -147,6 +147,18 @@ Start a second terminal window
 
 `cd ui`
 
+Clone the third-party React library- react-image-show- that I customized for this project.
+
+`git clone git@github.com:marshall62/react-image-show.git`
+
+`cd react-image-show`
+
+`npm install`
+
+`npm run-script build`
+
+`cd ..`
+
 `npm install`
 
 `npm start` 
