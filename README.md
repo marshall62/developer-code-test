@@ -143,7 +143,7 @@ This is the REST service.  To test, get in the browser and put in the URL:
 
 Start a second terminal window 
 
-`cd <cma-dir>`
+`cd developer-code-test`
 
 `cd ui`
 
