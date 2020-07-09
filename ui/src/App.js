@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import CMABanner from './CMABanner';
 import SearchControls from './SearchControls';
 import Artworks from './Artworks';

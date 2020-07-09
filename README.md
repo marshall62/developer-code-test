@@ -21,11 +21,37 @@ departments that the work is a member of.   The queries required some extra
 tweaking to overcome some rather odd database issues such as duplicated creator/role
 information for artworks.  The question asked that JSON be exported to a file and 
 that this file then be used as input to the program written for question 2.  
-I didn't believe this made a lot of sense because a simple file containing
-JSON is far less useful than a SQLite database if one is writing a web app to
-search a collection.  Therefore, I exported the JSON to a Mongo database which
-a web app can use more productively to lookup information.  So you see I am
-using the python libraries sqlite3 and pymongo to get the database read in and exported.
+I took the liberty of exporting my JSON objects to MongoDB (which does store the collection in a file that
+it manages efficiently).  I saw you have MongoDb in your tech stack and so I'm sure you
+see the wisdom of using a JSON based database rather than a text file containing JSON.
+Using a variety of SQL queries
+I created one Mongo collection, Artwork, which holds all the information relevant to
+an Artwork and looks like this:
+
+```
+{
+	"_id" : ObjectId("5f072776b94baa02ef0579a5"),
+	"id" : "95191",
+	"accession_number" : "1915.79.6",
+	"title" : "Mercury tells Aeneas to Leave Carthage",
+	"tombstone" : "Mercury tells Aeneas to Leave Carthage, 1679. Giovanni Francesco Romanelli (Italian, 1610-1662), Michael Wauters (Flemish, 1679). Tapestry weave: silk and wool; overall: 411 x 337 cm (161 13/16 x 132 11/16 in.). The Cleveland Museum of Art, Gift of Mrs. Francis F. Prentiss, in memory of Dr. Dudley P. Allen 1915.79.6",
+	"creators" : {
+		"designed by" : [
+			"Giovanni Francesco Romanelli (Italian, 1610-1662)"
+		],
+		"woven by" : [
+			"Michael Wauters (Flemish, 1679)"
+		]
+	},
+	"departments" : [
+		"Textiles"
+	]
+}
+```
+
+In /src/db_migrate.py you see I am
+using the python libraries sqlite3 and pymongo to query all the data out of the SQLite database and export it
+to the JSON (MongoDb) database.
 
 
 
@@ -41,8 +67,8 @@ time trying out ideas and correcting flaws.  I got it to a workable state.  I do
 it would look good on a phone.  It should look fine in Google Chrome.
 
 # How to set up and run
+`git clone git@github.com:marshall62/developer-code-test.git`
 
-After clone from github to <cma-dir>
 
 **_MongoDb needs to be installed and running on machine._**
 
@@ -57,7 +83,7 @@ _**node and npm must be installed on machine.**_
 
 You need to be running Python 3.
 
-`cd <cma-dir>`
+`cd developer-code-test`
 
 `cd src`
 
@@ -66,6 +92,7 @@ Note the SQLite database given to us is in this directory
 `python3 -m venv venv`
 
 `source venv/bin/activate` (Linux/Mac OS)
+'./venv/Scripts/activate' (Windows)
 
 You are now in a python virtual environment
 
@@ -75,7 +102,7 @@ You are now in a python virtual environment
 
 If your MongoDb is running on a different port, set the above environment variable to the correct port
 
-`python dbmigrate.py`
+`python db_migrate.py`
 
 The MongoDb cma schema now has one collection called artwork which holds all
 the information about the artworks. To verify this start a Mongo CLI and run
@@ -85,13 +112,21 @@ a simple query:
 
 `>use cma`
 
-`>db.artwork.find()`
+`> db.artwork.find({id: "95191"}).pretty()`
+
+You'll see the record for _Mercury tells Aeneas to Leave Carthage_ 
+
+`> exit`
 
 We'll now start Flask. Port 5000 must be available.
 
 `flask run&`
 
 Flask server is now running on port 5000 as a background process.
+
+This is the REST service.  To test, get in the browser and put in the URL:
+
+`http://localhost:5000/api/artwork?accession_number=1915.79.6`
 
 
 ### React Front-end 

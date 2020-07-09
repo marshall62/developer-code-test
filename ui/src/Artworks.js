@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import SlideShow from 'react-image-show';
 import './Artworks.css';
 import {FieldUtil} from './FieldUtil';
 import { Lightbox } from "react-modal-image";
-
-import img1 from './temp/a.jpg';
-import img2 from './temp/b.jpg';
-import img3 from './temp/c.jpg';
 
 
 class Artworks extends Component {
